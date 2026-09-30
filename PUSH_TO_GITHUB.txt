@@ -1,0 +1,26 @@
+# Commands to Push to GitHub
+
+# After creating the repository on GitHub.com, run these commands:
+
+# 1. Add the remote (replace YOUR-USERNAME with your GitHub username)
+git remote add origin https://github.com/YOUR-USERNAME/carebridge-uae.git
+
+# 2. Rename branch to main (if needed)
+git branch -M main
+
+# 3. Push to GitHub
+git push -u origin main
+
+# ===================================================================
+# EXAMPLE (replace with your actual repository URL):
+# git remote add origin https://github.com/moiznaveed/carebridge-uae.git
+# git branch -M main
+# git push -u origin main
+# ===================================================================
+
+# If you already have a remote configured, use:
+# git remote set-url origin https://github.com/YOUR-USERNAME/carebridge-uae.git
+# git push -u origin main
+
+# To verify the remote:
+# git remote -v
