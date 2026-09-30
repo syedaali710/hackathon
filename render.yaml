@@ -1,0 +1,19 @@
+# Render Blueprint — one Docker web service serving the CareBridge UAE
+# dashboard + API. Import at https://dashboard.render.com/blueprints
+services:
+  - type: web
+    name: carebridge-uae
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    plan: free
+    healthCheckPath: /api/health
+    autoDeploy: true
+    envVars:
+      # Add your key in the Render dashboard (Environment tab). The app runs
+      # without it — tools work; the LLM agent turns on once a key is set.
+      - key: ANTHROPIC_API_KEY
+        sync: false
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: CAREBRIDGE_MODEL
+        sync: false

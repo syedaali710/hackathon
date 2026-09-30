@@ -1,0 +1,44 @@
+{
+  "_comment": "Rich bilingual provider records used by the local server so the dashboard's provider cards render identically to the design, but sourced from a real backend search. Neurology / Dubai / availability <=24h.",
+  "providers": [
+    {
+      "id": "PRV-NEU-014",
+      "provider_id": "PRV-NEU-014",
+      "specialty": "Neurology",
+      "doc": "Dr. Khalid Al Mansouri", "docAr": "د. خالد المنصوري",
+      "clinic": "Creek Neurology Clinic", "clinicAr": "عيادة الخور للأعصاب",
+      "area": "Dubai Healthcare City", "areaAr": "مدينة دبي الطبية",
+      "emirate": "Dubai",
+      "when": "today 4:30 PM", "whenAr": "اليوم 4:30 مساءً", "short": "4:30 PM",
+      "km": 6.2,
+      "langs": "Arabic, English", "langsAr": "العربية، الإنجليزية",
+      "languages": ["Arabic", "English"]
+    },
+    {
+      "id": "PRV-NEU-027",
+      "provider_id": "PRV-NEU-027",
+      "specialty": "Neurology",
+      "doc": "Dr. Priya Nair", "docAr": "د. بريا ناير",
+      "clinic": "Al Barsha Medical Centre", "clinicAr": "مركز البرشاء الطبي",
+      "area": "Al Barsha", "areaAr": "البرشاء",
+      "emirate": "Dubai",
+      "when": "tomorrow 10:00 AM", "whenAr": "غداً 10:00 صباحاً", "short": "10:00 AM",
+      "km": 9.8,
+      "langs": "English, Hindi, Malayalam", "langsAr": "الإنجليزية، الهندية، المالايالامية",
+      "languages": ["English", "Hindi", "Malayalam"]
+    },
+    {
+      "id": "PRV-NEU-031",
+      "provider_id": "PRV-NEU-031",
+      "specialty": "Neurology",
+      "doc": "Dr. Omar Haddad", "docAr": "د. عمر حداد",
+      "clinic": "Jumeirah Specialist Clinic", "clinicAr": "عيادة جميرا التخصصية",
+      "area": "Jumeirah", "areaAr": "جميرا",
+      "emirate": "Dubai",
+      "when": "tomorrow 2:00 PM", "whenAr": "غداً 2:00 مساءً", "short": "2:00 PM",
+      "km": 12.4,
+      "langs": "Arabic, English, French", "langsAr": "العربية، الإنجليزية، الفرنسية",
+      "languages": ["Arabic", "English", "French"]
+    }
+  ]
+}
