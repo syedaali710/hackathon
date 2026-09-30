@@ -1,0 +1,101 @@
+{
+  "name": "CareBridgeUAEGuardrails",
+  "description": "Safety guardrails for CareBridge UAE healthcare navigation agent",
+  "deniedTopics": [
+    {
+      "name": "MedicalDiagnosis",
+      "definition": "Identifying or naming specific medical conditions, diseases, or diagnoses based on symptoms",
+      "examples": [
+        "You have a migraine",
+        "This is likely a stroke",
+        "It sounds like you have diabetes",
+        "Your symptoms indicate hypertension"
+      ],
+      "type": "DENY"
+    },
+    {
+      "name": "MedicationPrescribing",
+      "definition": "Recommending, prescribing, or suggesting specific medications to take",
+      "examples": [
+        "You should take ibuprofen",
+        "I recommend aspirin for this",
+        "Take paracetamol",
+        "You need antibiotics"
+      ],
+      "type": "DENY"
+    },
+    {
+      "name": "MedicationDosing",
+      "definition": "Providing specific medication doses or dosage instructions",
+      "examples": [
+        "Take 500mg twice daily",
+        "You should take two tablets",
+        "Increase your dose to 20mg",
+        "Take double your normal dose"
+      ],
+      "type": "DENY"
+    },
+    {
+      "name": "TreatmentRecommendations",
+      "definition": "Suggesting medical treatments, procedures, or therapeutic interventions",
+      "examples": [
+        "You need surgery",
+        "Start physical therapy",
+        "You should get an MRI scan",
+        "Stop taking your current medication"
+      ],
+      "type": "DENY"
+    }
+  ],
+  "contentFilters": [
+    {
+      "type": "PROMPT_ATTACK",
+      "inputStrength": "HIGH",
+      "outputStrength": "NONE"
+    },
+    {
+      "type": "HATE",
+      "inputStrength": "HIGH",
+      "outputStrength": "HIGH"
+    },
+    {
+      "type": "INSULTS",
+      "inputStrength": "MEDIUM",
+      "outputStrength": "MEDIUM"
+    },
+    {
+      "type": "SEXUAL",
+      "inputStrength": "HIGH",
+      "outputStrength": "HIGH"
+    },
+    {
+      "type": "VIOLENCE",
+      "inputStrength": "HIGH",
+      "outputStrength": "HIGH"
+    }
+  ],
+  "wordFilters": [
+    {
+      "text": "diagnosis",
+      "action": "BLOCK"
+    },
+    {
+      "text": "prescribe",
+      "action": "BLOCK"
+    }
+  ],
+  "sensitiveInformationFilters": [
+    {
+      "type": "EMAIL",
+      "action": "ANONYMIZE"
+    },
+    {
+      "type": "PHONE",
+      "action": "ANONYMIZE"
+    },
+    {
+      "type": "NAME",
+      "action": "ANONYMIZE"
+    }
+  ]
+}

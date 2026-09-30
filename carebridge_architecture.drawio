@@ -1,0 +1,172 @@
+<mxfile host="app.diagrams.net" modified="2024-01-01T00:00:00.000Z" agent="draw.io" version="22.0.0" type="device">
+  <diagram name="CareBridge UAE Architecture" id="carebridge-architecture">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- Patient/User Layer -->
+        <mxCell id="patient" value="Patient / Gary" style="shape=actor;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="520" y="40" width="60" height="80" as="geometry" />
+        </mxCell>
+        
+        <!-- Web UI Layer -->
+        <mxCell id="webui" value="Bilingual English–Arabic / RTL&#xa;Accessible Web UI" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="400" y="180" width="300" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow from Patient to Web UI -->
+        <mxCell id="arrow1" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=2;" edge="1" parent="1" source="patient" target="webui">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="560" y="400" as="sourcePoint" />
+            <mxPoint x="610" y="350" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Core Agent -->
+        <mxCell id="agent" value="CareBridgeHealthAgent&#xa;(Strands Agent on Amazon Bedrock&#xa;AgentCore Runtime)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;fontStyle=1;align=center;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="350" y="300" width="400" height="120" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow from Web UI to Agent -->
+        <mxCell id="arrow2" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=2;" edge="1" parent="1" source="webui" target="agent">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="560" y="400" as="sourcePoint" />
+            <mxPoint x="610" y="350" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Agent Components -->
+        <mxCell id="guardrails" value="Amazon Bedrock&#xa;Guardrails" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="370" y="350" width="100" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="memory" value="AgentCore&#xa;Memory" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="500" y="350" width="100" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="gateway" value="AgentCore Gateway&#xa;/ MCP Tools" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="630" y="350" width="100" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- Tools Layer -->
+        <mxCell id="tools-container" value="Tools" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=12;fontStyle=1;align=left;verticalAlign=top;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="200" y="480" width="700" height="160" as="geometry" />
+        </mxCell>
+        
+        <!-- Individual Tools -->
+        <mxCell id="tool1" value="Patient Context&#xa;Tool" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b1ddf0;strokeColor=#10739e;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="220" y="520" width="100" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="tool2" value="Triage &amp; Referral&#xa;Knowledge Base&#xa;Retrieval" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b1ddf0;strokeColor=#10739e;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="340" y="520" width="100" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="tool3" value="Medication&#xa;Interaction Tool" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b1ddf0;strokeColor=#10739e;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="460" y="520" width="100" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="tool4" value="Provider Search&#xa;Tool" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b1ddf0;strokeColor=#10739e;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="580" y="520" width="100" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="tool5" value="Mock Appointment&#xa;Booking Tool" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b1ddf0;strokeColor=#10739e;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="700" y="520" width="100" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="tool6" value="Visit Summary&#xa;Tool" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b1ddf0;strokeColor=#10739e;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="820" y="520" width="100" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Lambda Layer -->
+        <mxCell id="lambda" value="AWS Lambda&#xa;(Tool Execution Functions)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffccbc;strokeColor=#e64a19;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="800" y="300" width="150" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Bedrock Model -->
+        <mxCell id="bedrock" value="Amazon Bedrock&#xa;(Claude Model)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#bbdefb;strokeColor=#1565c0;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="180" y="300" width="140" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- SSM Parameter Store -->
+        <mxCell id="ssm" value="AWS SSM&#xa;Parameter Store&#xa;(Config)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c5e1a5;strokeColor=#558b2f;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="800" y="400" width="120" height="70" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow from Agent to Bedrock -->
+        <mxCell id="arrow_bedrock" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;" edge="1" parent="1" source="agent" target="bedrock">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="560" y="400" as="sourcePoint" />
+            <mxPoint x="610" y="350" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Arrow from Gateway to Lambda -->
+        <mxCell id="arrow_lambda" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;" edge="1" parent="1" source="gateway" target="lambda">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="560" y="400" as="sourcePoint" />
+            <mxPoint x="610" y="350" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Arrow from Lambda to SSM -->
+        <mxCell id="arrow_ssm" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=1;dashed=1;" edge="1" parent="1" source="lambda" target="ssm">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="560" y="450" as="sourcePoint" />
+            <mxPoint x="610" y="400" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Arrow from Gateway to Tools -->
+        <mxCell id="arrow3" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;strokeWidth=2;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="lambda" target="tools-container">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="560" y="500" as="sourcePoint" />
+            <mxPoint x="610" y="450" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Data Storage Layer -->
+        <mxCell id="dynamodb" value="DynamoDB&#xa;(Synthetic Patients &amp;&#xa;Mock Providers)" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#fad7ac;strokeColor=#b46504;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="200" y="680" width="150" height="100" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="knowledgebase" value="Knowledge Base&#xa;(Triage, Referral,&#xa;Medication-Reference&#xa;Guidance)" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#fad9d5;strokeColor=#ae4132;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="400" y="680" width="150" height="100" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="cloudwatch" value="CloudWatch&#xa;(Redacted Operational&#xa;Traces Only)" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#d0cee2;strokeColor=#56517e;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="600" y="680" width="150" height="100" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrows from Tools to Data Layer -->
+        <mxCell id="arrow4" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.2;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;strokeWidth=1;dashed=1;" edge="1" parent="1" source="tools-container" target="dynamodb">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="560" y="700" as="sourcePoint" />
+            <mxPoint x="610" y="650" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="arrow5" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;strokeWidth=1;dashed=1;" edge="1" parent="1" source="tools-container" target="knowledgebase">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="560" y="700" as="sourcePoint" />
+            <mxPoint x="610" y="650" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="arrow6" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.8;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;strokeWidth=1;dashed=1;" edge="1" parent="1" source="tools-container" target="cloudwatch">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="560" y="700" as="sourcePoint" />
+            <mxPoint x="610" y="650" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Footer Note -->
+        <mxCell id="footer" value="Prototype uses synthetic data and simulated provider tools.&#xa;CareBridge UAE supports healthcare navigation; it does not diagnose, prescribe, or replace clinicians." style="text;html=1;strokeColor=#666666;fillColor=#f5f5f5;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=10;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="200" y="810" width="700" height="40" as="geometry" />
+        </mxCell>
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

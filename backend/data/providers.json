@@ -1,0 +1,164 @@
+{
+  "providers": [
+    {
+      "provider_id": "PR001",
+      "name": "Dr. Sara Al-Mansouri",
+      "specialty": "Internal Medicine",
+      "qualifications": ["MBBS", "MRCP"],
+      "languages": ["English", "Arabic"],
+      "location": {
+        "clinic_name": "Dubai Healthcare City Medical Center",
+        "address": "Building 64, Dubai Healthcare City",
+        "emirate": "Dubai"
+      },
+      "availability": [
+        {
+          "date": "2024-10-01",
+          "time_slots": ["09:00", "10:30", "14:00", "15:30"]
+        },
+        {
+          "date": "2024-10-02",
+          "time_slots": ["09:00", "11:00", "13:00"]
+        },
+        {
+          "date": "2024-10-03",
+          "time_slots": ["10:00", "14:30", "16:00"]
+        }
+      ],
+      "consultation_fee": "350 AED",
+      "accepts_insurance": true
+    },
+    {
+      "provider_id": "PR002",
+      "name": "Dr. Mohammed Khalil",
+      "specialty": "Neurology",
+      "qualifications": ["MD", "Board Certified Neurology"],
+      "languages": ["English", "Arabic", "Urdu"],
+      "location": {
+        "clinic_name": "American Hospital Dubai",
+        "address": "Oud Metha Road",
+        "emirate": "Dubai"
+      },
+      "availability": [
+        {
+          "date": "2024-10-01",
+          "time_slots": ["08:30", "11:00", "15:00"]
+        },
+        {
+          "date": "2024-10-02",
+          "time_slots": ["09:30", "13:30", "16:30"]
+        }
+      ],
+      "consultation_fee": "450 AED",
+      "accepts_insurance": true
+    },
+    {
+      "provider_id": "PR003",
+      "name": "Dr. Noura Al-Zaabi",
+      "specialty": "Endocrinology",
+      "qualifications": ["MBBS", "FRCP", "Endocrinology Fellowship"],
+      "languages": ["Arabic", "English"],
+      "location": {
+        "clinic_name": "Mediclinic City Hospital",
+        "address": "Dubai Healthcare City",
+        "emirate": "Dubai"
+      },
+      "availability": [
+        {
+          "date": "2024-10-01",
+          "time_slots": ["10:00", "14:00", "16:30"]
+        },
+        {
+          "date": "2024-10-03",
+          "time_slots": ["09:00", "11:30", "15:00"]
+        },
+        {
+          "date": "2024-10-04",
+          "time_slots": ["08:30", "13:00"]
+        }
+      ],
+      "consultation_fee": "400 AED",
+      "accepts_insurance": true
+    },
+    {
+      "provider_id": "PR004",
+      "name": "Dr. Aisha Rahman",
+      "specialty": "Ophthalmology",
+      "qualifications": ["MBBS", "MS Ophthalmology"],
+      "languages": ["English", "Arabic", "Hindi"],
+      "location": {
+        "clinic_name": "Moorfields Eye Hospital Dubai",
+        "address": "Al Razi Building, Dubai Healthcare City",
+        "emirate": "Dubai"
+      },
+      "availability": [
+        {
+          "date": "2024-10-01",
+          "time_slots": ["09:00", "12:00", "16:00"]
+        },
+        {
+          "date": "2024-10-02",
+          "time_slots": ["10:00", "14:30"]
+        },
+        {
+          "date": "2024-10-03",
+          "time_slots": ["09:30", "13:00", "15:30"]
+        }
+      ],
+      "consultation_fee": "380 AED",
+      "accepts_insurance": true
+    },
+    {
+      "provider_id": "PR005",
+      "name": "Dr. Khalid Al-Ameri",
+      "specialty": "Cardiology",
+      "qualifications": ["MD", "FACC", "Interventional Cardiology"],
+      "languages": ["Arabic", "English"],
+      "location": {
+        "clinic_name": "Cleveland Clinic Abu Dhabi",
+        "address": "Al Maryah Island",
+        "emirate": "Abu Dhabi"
+      },
+      "availability": [
+        {
+          "date": "2024-10-02",
+          "time_slots": ["08:00", "10:30", "14:00"]
+        },
+        {
+          "date": "2024-10-03",
+          "time_slots": ["09:00", "12:00", "15:00"]
+        }
+      ],
+      "consultation_fee": "500 AED",
+      "accepts_insurance": true
+    },
+    {
+      "provider_id": "PR006",
+      "name": "Dr. Fatima Al-Hashimi",
+      "specialty": "General Practice",
+      "qualifications": ["MBBS", "MRCGP"],
+      "languages": ["Arabic", "English"],
+      "location": {
+        "clinic_name": "Aster Clinic",
+        "address": "Mankhool Road",
+        "emirate": "Dubai"
+      },
+      "availability": [
+        {
+          "date": "2024-10-01",
+          "time_slots": ["08:00", "09:30", "11:00", "13:30", "15:00", "16:30"]
+        },
+        {
+          "date": "2024-10-02",
+          "time_slots": ["08:00", "10:00", "12:00", "14:00", "16:00"]
+        },
+        {
+          "date": "2024-10-03",
+          "time_slots": ["09:00", "11:00", "13:00", "15:00"]
+        }
+      ],
+      "consultation_fee": "200 AED",
+      "accepts_insurance": true
+    }
+  ]
+}

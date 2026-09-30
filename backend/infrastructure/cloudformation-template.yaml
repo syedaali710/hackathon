@@ -1,0 +1,293 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'CareBridge UAE - Healthcare Navigation Agent Infrastructure'
+
+Parameters:
+  ProjectName:
+    Type: String
+    Default: carebridge-uae
+    Description: Project name for resource naming
+
+Resources:
+  # ============================================
+  # DynamoDB Tables
+  # ============================================
+  
+  PatientsTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: !Sub '${ProjectName}-patients'
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: patient_id
+          AttributeType: S
+      KeySchema:
+        - AttributeName: patient_id
+          KeyType: HASH
+      PointInTimeRecoverySpecification:
+        PointInTimeRecoveryEnabled: true
+      SSESpecification:
+        SSEEnabled: true
+      Tags:
+        - Key: Project
+          Value: !Ref ProjectName
+        - Key: Purpose
+          Value: Synthetic patient data storage
+
+  ProvidersTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: !Sub '${ProjectName}-providers'
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: provider_id
+          AttributeType: S
+        - AttributeName: specialty
+          AttributeType: S
+      KeySchema:
+        - AttributeName: provider_id
+          KeyType: HASH
+      GlobalSecondaryIndexes:
+        - IndexName: specialty-index
+          KeySchema:
+            - AttributeName: specialty
+              KeyType: HASH
+          Projection:
+            ProjectionType: ALL
+      Tags:
+        - Key: Project
+          Value: !Ref ProjectName
+        - Key: Purpose
+          Value: Mock provider directory
+
+  # ============================================
+  # SSM Parameters
+  # ============================================
+  
+  PatientsTableParameter:
+    Type: AWS::SSM::Parameter
+    Properties:
+      Name: /app/workshop/health-companion/patients-table
+      Type: String
+      Value: !Ref PatientsTable
+      Description: DynamoDB table name for synthetic patients
+
+  ProvidersTableParameter:
+    Type: AWS::SSM::Parameter
+    Properties:
+      Name: /app/workshop/health-companion/providers-table
+      Type: String
+      Value: !Ref ProvidersTable
+      Description: DynamoDB table name for mock providers
+
+  KnowledgeBaseIdParameter:
+    Type: AWS::SSM::Parameter
+    Properties:
+      Name: /app/workshop/health-companion/knowledge-base-id
+      Type: String
+      Value: PLACEHOLDER_KB_ID
+      Description: Bedrock Knowledge Base ID (update after KB creation)
+
+  GuardrailIdParameter:
+    Type: AWS::SSM::Parameter
+    Properties:
+      Name: /app/workshop/guardrails/guardrail-id
+      Type: String
+      Value: PLACEHOLDER_GUARDRAIL_ID
+      Description: Bedrock Guardrail ID (update after guardrail creation)
+
+  # ============================================
+  # IAM Roles
+  # ============================================
+  
+  LambdaExecutionRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: !Sub '${ProjectName}-lambda-execution-role'
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: lambda.amazonaws.com
+            Action: sts:AssumeRole
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
+      Policies:
+        - PolicyName: DynamoDBAccess
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action:
+                  - dynamodb:GetItem
+                  - dynamodb:PutItem
+                  - dynamodb:Query
+                  - dynamodb:Scan
+                Resource:
+                  - !GetAtt PatientsTable.Arn
+                  - !GetAtt ProvidersTable.Arn
+                  - !Sub '${ProvidersTable.Arn}/index/*'
+        - PolicyName: SSMAccess
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action:
+                  - ssm:GetParameter
+                  - ssm:GetParameters
+                Resource:
+                  - !Sub 'arn:aws:ssm:${AWS::Region}:${AWS::AccountId}:parameter/app/workshop/health-companion/*'
+                  - !Sub 'arn:aws:ssm:${AWS::Region}:${AWS::AccountId}:parameter/app/workshop/guardrails/*'
+        - PolicyName: BedrockAccess
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action:
+                  - bedrock:Retrieve
+                  - bedrock:InvokeModel
+                Resource: '*'
+
+  LambdaExecutionRoleParameter:
+    Type: AWS::SSM::Parameter
+    Properties:
+      Name: /app/workshop/lambda/execution-role-arn
+      Type: String
+      Value: !GetAtt LambdaExecutionRole.Arn
+      Description: Lambda execution role ARN
+
+  # ============================================
+  # Lambda Functions
+  # ============================================
+  
+  PatientContextFunction:
+    Type: AWS::Lambda::Function
+    Properties:
+      FunctionName: !Sub '${ProjectName}-patient-context'
+      Runtime: python3.11
+      Handler: handler.lambda_handler
+      Role: !GetAtt LambdaExecutionRole.Arn
+      Code:
+        ZipFile: |
+          # Placeholder - deploy actual code from lambda/patient-context/
+          def lambda_handler(event, context):
+              return {'statusCode': 200, 'body': 'Function needs deployment'}
+      Timeout: 30
+      MemorySize: 256
+      Environment:
+        Variables:
+          PROJECT_NAME: !Ref ProjectName
+      Tags:
+        - Key: Project
+          Value: !Ref ProjectName
+
+  MedicationInteractionFunction:
+    Type: AWS::Lambda::Function
+    Properties:
+      FunctionName: !Sub '${ProjectName}-medication-interaction'
+      Runtime: python3.11
+      Handler: handler.lambda_handler
+      Role: !GetAtt LambdaExecutionRole.Arn
+      Code:
+        ZipFile: |
+          # Placeholder - deploy actual code from lambda/medication-interaction/
+          def lambda_handler(event, context):
+              return {'statusCode': 200, 'body': 'Function needs deployment'}
+      Timeout: 30
+      MemorySize: 256
+      Tags:
+        - Key: Project
+          Value: !Ref ProjectName
+
+  ProviderSearchFunction:
+    Type: AWS::Lambda::Function
+    Properties:
+      FunctionName: !Sub '${ProjectName}-provider-search'
+      Runtime: python3.11
+      Handler: handler.lambda_handler
+      Role: !GetAtt LambdaExecutionRole.Arn
+      Code:
+        ZipFile: |
+          # Placeholder - deploy actual code from lambda/provider-search/
+          def lambda_handler(event, context):
+              return {'statusCode': 200, 'body': 'Function needs deployment'}
+      Timeout: 30
+      MemorySize: 256
+      Tags:
+        - Key: Project
+          Value: !Ref ProjectName
+
+  BookingFunction:
+    Type: AWS::Lambda::Function
+    Properties:
+      FunctionName: !Sub '${ProjectName}-booking'
+      Runtime: python3.11
+      Handler: handler.lambda_handler
+      Role: !GetAtt LambdaExecutionRole.Arn
+      Code:
+        ZipFile: |
+          # Placeholder - deploy actual code from lambda/booking/
+          def lambda_handler(event, context):
+              return {'statusCode': 200, 'body': 'Function needs deployment'}
+      Timeout: 30
+      MemorySize: 256
+      Tags:
+        - Key: Project
+          Value: !Ref ProjectName
+
+  VisitSummaryFunction:
+    Type: AWS::Lambda::Function
+    Properties:
+      FunctionName: !Sub '${ProjectName}-visit-summary'
+      Runtime: python3.11
+      Handler: handler.lambda_handler
+      Role: !GetAtt LambdaExecutionRole.Arn
+      Code:
+        ZipFile: |
+          # Placeholder - deploy actual code from lambda/visit-summary/
+          def lambda_handler(event, context):
+              return {'statusCode': 200, 'body': 'Function needs deployment'}
+      Timeout: 30
+      MemorySize: 512
+      Tags:
+        - Key: Project
+          Value: !Ref ProjectName
+
+Outputs:
+  PatientsTableName:
+    Description: DynamoDB table for synthetic patients
+    Value: !Ref PatientsTable
+    Export:
+      Name: !Sub '${ProjectName}-patients-table'
+
+  ProvidersTableName:
+    Description: DynamoDB table for mock providers
+    Value: !Ref ProvidersTable
+    Export:
+      Name: !Sub '${ProjectName}-providers-table'
+
+  LambdaExecutionRoleArn:
+    Description: IAM role for Lambda functions
+    Value: !GetAtt LambdaExecutionRole.Arn
+    Export:
+      Name: !Sub '${ProjectName}-lambda-role'
+
+  PatientContextFunctionArn:
+    Description: Patient Context Lambda function ARN
+    Value: !GetAtt PatientContextFunction.Arn
+
+  MedicationInteractionFunctionArn:
+    Description: Medication Interaction Lambda function ARN
+    Value: !GetAtt MedicationInteractionFunction.Arn
+
+  ProviderSearchFunctionArn:
+    Description: Provider Search Lambda function ARN
+    Value: !GetAtt ProviderSearchFunction.Arn
+
+  BookingFunctionArn:
+    Description: Booking Lambda function ARN
+    Value: !GetAtt BookingFunction.Arn
+
+  VisitSummaryFunctionArn:
+    Description: Visit Summary Lambda function ARN
+    Value: !GetAtt VisitSummaryFunction.Arn

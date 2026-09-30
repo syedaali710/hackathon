@@ -1,0 +1,134 @@
+{
+  "patients": [
+    {
+      "patient_id": "P001",
+      "name": "Gary Ahmed",
+      "age": 45,
+      "language_preference": "english",
+      "current_medications": [
+        {
+          "name": "Lisinopril",
+          "dose": "10mg",
+          "frequency": "once daily",
+          "indication": "Hypertension"
+        },
+        {
+          "name": "Amlodipine",
+          "dose": "5mg",
+          "frequency": "once daily",
+          "indication": "Hypertension"
+        }
+      ],
+      "allergies": [
+        {
+          "allergen": "Penicillin",
+          "reaction": "Rash"
+        }
+      ],
+      "medical_history": [
+        {
+          "condition": "Hypertension",
+          "diagnosed_date": "2020-03-15",
+          "status": "ongoing"
+        },
+        {
+          "condition": "Type 2 Diabetes",
+          "diagnosed_date": "2021-06-20",
+          "status": "controlled"
+        }
+      ],
+      "recent_consultations": [
+        {
+          "date": "2024-01-10",
+          "provider": "Dr. Sara Al-Mansouri",
+          "reason": "Routine hypertension follow-up",
+          "notes": "BP controlled, continue current medications"
+        }
+      ],
+      "emergency_contact": {
+        "name": "Fatima Ahmed",
+        "relationship": "Spouse",
+        "phone": "+971-50-XXX-XXXX"
+      }
+    },
+    {
+      "patient_id": "P002",
+      "name": "Layla Hassan",
+      "age": 32,
+      "language_preference": "arabic",
+      "current_medications": [],
+      "allergies": [
+        {
+          "allergen": "Aspirin",
+          "reaction": "Stomach upset"
+        }
+      ],
+      "medical_history": [
+        {
+          "condition": "Asthma",
+          "diagnosed_date": "2015-08-10",
+          "status": "controlled"
+        }
+      ],
+      "recent_consultations": [
+        {
+          "date": "2024-02-05",
+          "provider": "Dr. Mohammed Khalil",
+          "reason": "Asthma review",
+          "notes": "Well controlled, no recent exacerbations"
+        }
+      ],
+      "emergency_contact": {
+        "name": "Omar Hassan",
+        "relationship": "Brother",
+        "phone": "+971-55-XXX-XXXX"
+      }
+    },
+    {
+      "patient_id": "P003",
+      "name": "Ahmed Al-Suwaidi",
+      "age": 58,
+      "language_preference": "arabic",
+      "current_medications": [
+        {
+          "name": "Metformin",
+          "dose": "500mg",
+          "frequency": "twice daily",
+          "indication": "Type 2 Diabetes"
+        },
+        {
+          "name": "Atorvastatin",
+          "dose": "20mg",
+          "frequency": "once daily",
+          "indication": "High cholesterol"
+        }
+      ],
+      "allergies": [],
+      "medical_history": [
+        {
+          "condition": "Type 2 Diabetes",
+          "diagnosed_date": "2018-04-12",
+          "status": "ongoing"
+        },
+        {
+          "condition": "Hyperlipidemia",
+          "diagnosed_date": "2019-09-08",
+          "status": "ongoing"
+        }
+      ],
+      "recent_consultations": [
+        {
+          "date": "2024-01-22",
+          "provider": "Dr. Noura Al-Zaabi",
+          "reason": "Diabetes and lipid management",
+          "notes": "HbA1c improving, lipid profile stable"
+        }
+      ],
+      "emergency_contact": {
+        "name": "Mariam Al-Suwaidi",
+        "relationship": "Daughter",
+        "phone": "+971-56-XXX-XXXX"
+      }
+    }
+  ]
+}
